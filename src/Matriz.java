@@ -70,7 +70,9 @@ public class Matriz {
                     }
                     break;
                 case 6:
-                    JOptionPane.showInputDialog(null, "Gestionar Historial Clinico");
+                    this.setup();
+                    this.init_array();
+                    this.Matriz3();
                     break;
                 case 7:
                     JOptionPane.showMessageDialog(null, "Adios");
@@ -149,36 +151,6 @@ public class Matriz {
 
         if (seleccion == 0) {
             System.out.println("soy si");
-           /* for (int i = 0; i < this.matrizX.length; i++) {
-                /*int position = i +1;
-                String inputValue = JOptionPane.showInputDialog("Ingrese el valor de la posicion " + position);
-                if (!inputValue.isBlank() && inputValue.matches("-?\\d+")) {
-                    this.vectorX[i] = Integer.parseInt(inputValue);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Ingrese un número valido");
-                    i = i - 1;
-                }
-
-                if (i + 1 < this.matrizX.length) {
-                    int options = JOptionPane.showOptionDialog(
-                            null,
-                            "¿Quiere llenar la matriz?",
-                            "Logica",
-                            JOptionPane.YES_NO_CANCEL_OPTION,
-                            JOptionPane.QUESTION_MESSAGE,
-                            null,    // null para icono por defecto.
-                            new Object[]{"Si", "No"},   // null para YES, NO y CANCEL
-                            "Si");
-
-                    if (options == 1) {
-                        for (int j = i + 1; j < this.vectorX.length; j++) {
-                            this.vectorX[j] = 0;
-                        }
-                        break;
-                    }
-                }
-            }*/
-            //pintarVector("vector ::::");
         } else if (seleccion == 1) {
            matrices(matrizA);
             if(this.option == 1 || this.option == 2 ||   this.option == 3 || this.option == 4){
@@ -324,7 +296,14 @@ public class Matriz {
         this.main();
     }
 
-    private void Matriz3{
+    private void Matriz3(){
+        int eleA[][]=new int[nFilas][nCol];
+
+        for(int i=0;i<nFilas;i++) {
+            for (int j = 0; j < nCol; j++) {
+                eleA[i][j] =  matrizA[i][j] * matrizA[i][j] *  matrizA[i][j];
+            }
+        }
         String name1 = "Matriz A\n";
         String name2 = "Matriz ^3\n";
         String result = " ";
@@ -333,7 +312,7 @@ public class Matriz {
             for (int j = 0; j < nCol; j++) {
                 result1 += matrizA[i][j];
                 result1 += "      ";
-                result += Math.pow((matrizA[i][j]),3);
+                result += eleA[i][j];
                 result += "      ";
             }
             result += "\n";
@@ -344,7 +323,6 @@ public class Matriz {
         JOptionPane.showMessageDialog(null, name1 + result1 + name2 + result);
         this.main();
     }
-
 
     private boolean validate(String input) {
         return !input.isBlank() && input.matches("^\\d+$");
