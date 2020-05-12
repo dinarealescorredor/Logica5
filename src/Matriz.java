@@ -150,14 +150,31 @@ public class Matriz {
                 "Si");
 
         if (seleccion == 0) {
-            System.out.println("soy si");
-        } else if (seleccion == 1) {
+            Scanner entrada = new Scanner(System.in);
+
+            System.out.println("Matriz A");
+            for (int i=0; i<nFilas; i++) { //recorro el numero de filas (horizontal)
+                for(int j=0; j<nCol; j++){
+                    System.out.print("Matriz ["+i+"]["+j+"]: ");
+                    matrizA[i][j] = entrada.nextInt();
+                }
+            }
+
+            if(this.option == 1 || this.option == 2 ||   this.option == 3 || this.option == 4){
+                System.out.println("Matriz B");
+                for (int i=0; i<nFilasB; i++) { //recorro el numero de filas (horizontal)
+                    for(int j=0; j<nColB; j++){
+                        System.out.print("Matriz ["+i+"]["+j+"]: ");
+                        matrizB[i][j] = entrada.nextInt();
+                    }
+                }
+            }
+
+            } else if (seleccion == 1) {
            matrices(matrizA);
             if(this.option == 1 || this.option == 2 ||   this.option == 3 || this.option == 4){
                 matrices(matrizB);
             }
-
-
         } else {
             JOptionPane.showMessageDialog(null, "Por favor seleccione si o no");
             this.init_array();
