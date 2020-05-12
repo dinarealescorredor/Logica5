@@ -48,8 +48,14 @@ public class Matriz {
                     }
                     break;
                 case 3:
-                    JOptionPane.showInputDialog(null, "Gestionar Historial Clinico");
-                    break;
+                    this.setup();
+                    if(nFilas == nFilasB && nCol == nColB){
+                        this.init_array();
+                        this.MultiplicarMatriz();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Por favor crea las matrices A y B de igual dimension");
+                        this.main();
+                    }                    break;
                 case 4:
                     JOptionPane.showInputDialog(null, "Gestionar Medicos");
                     break;
@@ -252,6 +258,39 @@ public class Matriz {
                 result += matrizB[i][j];
                 result += "      ";
                 result2 += resAB[i][j];
+                result2 += "      ";
+            }
+            result += "\n";
+            result1 += "\n";
+            result2 += "\n";
+        }
+        result += "\n";
+        result1 += "\n";
+        result2 += "\n";
+        JOptionPane.showMessageDialog(null, name1 + result1 + name2 + result + name3 + result2);
+    }
+
+    private void MultiplicarMatriz(){
+        int mulAB[][]=new int[nFilas][nCol];
+
+        for(int i=0;i<nFilas;i++) {
+            for (int j = 0; j < nColB; j++) {
+                mulAB[i][j] = matrizA[i][j] * matrizB[i][j];    //use - for subtraction
+            }
+        }
+        String name1 = "Matriz A\n";
+        String name2 = "Matriz B\n";
+        String name3 = "Matriz A.B\n";
+        String result = " ";
+        String result1 = " ";
+        String result2 = " ";
+        for (int i = 0; i < nFilas; i++) {
+            for (int j = 0; j < nCol; j++) {
+                result1 += matrizA[i][j];
+                result1 += "      ";
+                result += matrizB[i][j];
+                result += "      ";
+                result2 += mulAB[i][j];
                 result2 += "      ";
             }
             result += "\n";
