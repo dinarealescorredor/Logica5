@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.util.*;
 
+import static java.lang.Integer.parseInt;
+
 /**
  * funcionalidad basica de arrays
  */
@@ -24,7 +26,7 @@ public class Matriz {
             System.exit(0);
         }
         else if (validate(input)) {
-            this.option = Integer.parseInt(input);
+            this.option = parseInt(input);
 
             switch (this.option) {
                 case 1:
@@ -98,8 +100,8 @@ public class Matriz {
         }
         try {
             if (validate(input) && validate(input2)) {
-                nFilas = Integer.parseInt(input);
-                nCol = Integer.parseInt(input2);
+                nFilas = parseInt(input);
+                nCol = parseInt(input2);
                 if (this.nFilas == 0 || this.nFilas == 1 || this.nCol == 0 || this.nCol == 1) {
                     JOptionPane.showMessageDialog(null, "Ingrese un numero mayor a 1");
                     this.setup();
@@ -120,8 +122,8 @@ public class Matriz {
                 }
 
                 if (validate(input) && validate(input2)) {
-                    nFilasB = Integer.parseInt(input);
-                    nColB = Integer.parseInt(input2);
+                    nFilasB = parseInt(input);
+                    nColB = parseInt(input2);
                     if (this.nFilas == 0 || this.nFilas == 1 || this.nCol == 0 || this.nCol == 1) {
                         JOptionPane.showMessageDialog(null, "Ingrese un numero mayor a 1");
                         this.setup();
@@ -155,8 +157,8 @@ public class Matriz {
             System.out.println("Matriz A");
             for (int i=0; i<nFilas; i++) { //recorro el numero de filas (horizontal)
                 for(int j=0; j<nCol; j++){
-                    System.out.print("Matriz ["+i+"]["+j+"]: ");
-                    matrizA[i][j] = entrada.nextInt();
+                    String input = JOptionPane.showInputDialog(null,"Matriz A\n Matriz["+i+"]["+j+"]: ");
+                    matrizA[i][j] = parseInt(input);
                 }
             }
 
@@ -164,8 +166,8 @@ public class Matriz {
                 System.out.println("Matriz B");
                 for (int i=0; i<nFilasB; i++) { //recorro el numero de filas (horizontal)
                     for(int j=0; j<nColB; j++){
-                        System.out.print("Matriz ["+i+"]["+j+"]: ");
-                        matrizB[i][j] = entrada.nextInt();
+                        String input2 = JOptionPane.showInputDialog(null,"Matriz B ["+i+"]["+j+"]: ");
+                        matrizB[i][j] = parseInt(input2);
                     }
                 }
             }
